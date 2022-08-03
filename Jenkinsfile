@@ -9,22 +9,25 @@ pipeline {
     stages {
 
         stage("start stage") {
-            step {
+            steps {
                 echo "Starting.."
             }
+            post {
+                always {
+                    echo "Finished 1.."
+                }   
+            }   
         }
         
-        stage("SLeep for 3 minutes") {
-            step {
+        stage("Sleep for 3 minutes") {
+            steps {
                 sh "sleep 180"
             }
+            post {
+                always {
+                    echo "Finished 2.."
+                }   
+            }  
         }
-
-        post {
-            step {
-                echo "Finished.."
-            }
-        }
-
     }
 }
